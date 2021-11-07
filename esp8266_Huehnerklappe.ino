@@ -92,7 +92,7 @@ void setup() {
       inputParam = "none";
     }
     Serial.println("Change to: " + inputMessage);
-    
+
     // Convert Input to int and change it from s to ms
     delay_shut = inputMessage.toInt() * 1000;
     
