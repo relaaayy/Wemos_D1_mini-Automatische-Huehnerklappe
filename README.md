@@ -20,7 +20,7 @@
 
 ### Schaltplan
 
-![](https://github.com/relaychris/esp8266_Huehnerklappe/blob/main/schaltung.png)
+![](https://github.com/relaychris/Wemos_D1_mini-Automatische-Huehnerklappe/blob/main/schaltung.png)
 
 #### Quellen
 
