@@ -1,3 +1,9 @@
+// Automatic Door for Chicken
+// Author: relaychris
+// Github: https://github.com/relaychris/ 
+// Version: 0.1
+// Creds: https://randomnerdtutorials.com/esp32-esp8266-input-data-html-form/
+
 #include <Arduino.h>
 #ifdef ESP32
   #include <WiFi.h>
