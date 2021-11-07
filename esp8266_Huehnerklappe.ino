@@ -4,6 +4,14 @@
 // Version: 0.1
 // Creds: https://randomnerdtutorials.com/esp32-esp8266-input-data-html-form/
 
+//  ######   #######  ####       ##     ##  ##     ####   ##   ##  ######    ####     #####
+//   ##  ##   ##   #   ##       ####    ##  ##    ##  ##  ##   ##   ##  ##    ##     ##   ##
+//   ##  ##   ## #     ##      ##  ##   ##  ##   ##       ##   ##   ##  ##    ##     #
+//   #####    ####     ##      ##  ##    ####    ##       #######   #####     ##      #####
+//   ## ##    ## #     ##   #  ######     ##     ##       ##   ##   ## ##     ##          ##
+//   ##  ##   ##   #   ##  ##  ##  ##     ##      ##  ##  ##   ##   ##  ##    ##     ##   ##
+//  #### ##  #######  #######  ##  ##    ####      ####   ##   ##  #### ##   ####     #####
+
 #include <Arduino.h>
 #ifdef ESP32
   #include <WiFi.h>
@@ -84,7 +92,9 @@ void setup() {
       inputParam = "none";
     }
     Serial.println("Change to: " + inputMessage);
-    delay_shut = inputMessage.toInt()* 1000;
+    
+    // Convert Input to int and change it from s to ms
+    delay_shut = inputMessage.toInt() * 1000;
     
     request->send(200, "text/html", "erfolgreich gespeichert (" 
                                      + inputParam + ") Schlie&szlig;zeit: " + inputMessage +
