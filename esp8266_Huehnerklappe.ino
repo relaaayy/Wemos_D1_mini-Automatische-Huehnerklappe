@@ -8,8 +8,12 @@
 #endif
 #include <ESPAsyncWebServer.h>
 #include "wlan_settings.h"
+
+//Photoresistor to Port A0
 #define Photoresistor A0
+//Relay Pin to Port D0
 #define relayPin_down 16
+//Relay Pin to Port D5
 #define relayPin_up 14
 
 AsyncWebServer server(80);
@@ -22,6 +26,7 @@ int delay_shut = 300;
 bool state = true;
 bool state_roller = true;
 
+//HTMl Page
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html><head>
   <title>H&uuml;hnerklappe</title>
@@ -38,16 +43,18 @@ void notFound(AsyncWebServerRequest *request) {
 }
 
 void setup() {
-  Serial.begin(9600);  // set baud rate to 
-  pinMode(relayPin_down, OUTPUT);
-  pinMode(relayPin_up, OUTPUT);
-  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);  // set baud rate to 9600 
+  pinMode(relayPin_down, OUTPUT); // set PinMode for Relay
+  pinMode(relayPin_up, OUTPUT); // set PinMode for Relay
+  pinMode(ledPin, OUTPUT); // set ledPin for Relay
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
+  // Check WiFi Connection and Print status
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.println("WiFi Failed!");
     return;
   }
+  // Print Ip Adress
   Serial.println();
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
@@ -78,13 +85,16 @@ void setup() {
                                      "<br><a href=\"/\">zur&uuml;ck</a>");
   });
   server.onNotFound(notFound);
+  // Start Webserver
   server.begin();
 }
 
 void loop() {
+  // Read Analog input from Photoresitstor
   int analogValue = analogRead(Photoresistor);
   int brightness = map(analogValue, 0, 1000, 0, 100);
-
+  
+  // Check Brightness and trigger Relay
   if (brightness > switchbrightness) {
     rollershutter();
     state = false;
