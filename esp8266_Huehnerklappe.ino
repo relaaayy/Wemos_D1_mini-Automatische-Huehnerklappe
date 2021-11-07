@@ -14,7 +14,7 @@
 
 AsyncWebServer server(80);
 
-const char* PARAM_INPUT_1 = "input1";
+const char* PARAM_INPUT = "input";
 const int analogPin = A0; 
 const int ledPin = 2;
 const int switchbrightness = 25;
@@ -28,7 +28,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
   <form action="/get">
-    Schlie&szlig;zeit in Sekunden: <input type="text" name="input1">
+    Schlie&szlig;zeit in Sekunden: <input type="text" name="input">
     <input type="submit" value="Speichern">
   </form><br>
 </body></html>)rawliteral";
@@ -57,14 +57,14 @@ void setup() {
     request->send_P(200, "text/html", index_html);
   });
 
-  // Send a GET request to <ESP_IP>/get?input1=<inputMessage>
+  // Send a GET request to <ESP_IP>/get?input=<inputMessage>
   server.on("/get", HTTP_GET, [] (AsyncWebServerRequest *request) {
     String inputMessage;
     String inputParam;
-    // GET input1 value on <ESP_IP>/get?input1=<inputMessage>
-    if (request->hasParam(PARAM_INPUT_1)) {
-      inputMessage = request->getParam(PARAM_INPUT_1)->value();
-      inputParam = PARAM_INPUT_1;
+    // GET input value on <ESP_IP>/get?input=<inputMessage>
+    if (request->hasParam(PARAM_INPUT)) {
+      inputMessage = request->getParam(PARAM_INPUT)->value();
+      inputParam = PARAM_INPUT;
     }
     else {
       inputMessage = "No message sent";
