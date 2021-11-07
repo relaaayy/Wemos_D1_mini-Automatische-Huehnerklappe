@@ -24,7 +24,7 @@
 - 1x Widerstand 10K Ohm
 - 1x 60x40mm Platine
 
-### Schaltplan
+### Schaltung(Fritzing)
 
 ![](https://github.com/relaychris/Wemos_D1_mini-Automatische-Huehnerklappe/blob/main/schaltung.png)
 
