@@ -18,6 +18,7 @@
 ### Benötigtes Zubehör
 
 - 1x Wemos D1 mini
+- 1x Rolladenmotor
 - 2x Relay KY-019
 - 1x Potentiometer Dreh Poti B10K Ohm Linear+
 - 1x Fotowiderstand 5mm GL5516
