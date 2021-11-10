@@ -147,6 +147,6 @@ void rollershutter() {
       state_roller = false;
       }
       else {
-        Serial.println("Nothing cause no Changes");
+        Serial.println("Nothing todo, cause no Changes");
         }
 }
