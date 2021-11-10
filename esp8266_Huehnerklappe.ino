@@ -1,4 +1,4 @@
-// Automatic Door for Chicken
+// Automatic Chickendoor
 // Author: relaychris
 // Github: https://github.com/relaychris/ 
 // Version: 0.1
